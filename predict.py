@@ -27,6 +27,7 @@ def predict(model, image_path, device):
         return "AD" if predicted.item() == 0 else "NC"
 
 def main():
+    print("Now executing main in predict.py")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model_path = "vit_model.pth"
     model = load_model(model_path, device)
