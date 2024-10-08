@@ -5,8 +5,8 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --gres=gpu:a100
-#SBATCH --job-name=ViT_train_predict
-#SBATCH -o Result_ViT.out
+#SBATCH --job-name=COMP_ViT_train
+#SBATCH -o Res_COMP_ViT.out
 
 conda activate demo
 
