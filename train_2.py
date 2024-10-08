@@ -226,7 +226,7 @@ def main():
     dropout = 0.1
     patch_size = 16
     cls_token = True
-    num_epochs = 10
+    num_epochs = 30
     patience = 5
     learning_rate = 3e-4
     weight_decay = 1e-5
