@@ -53,7 +53,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=3e-4)
 
-    train(model, train_loader, val_loader, criterion, optimizer, epochs=20, device=device)
+    train(model, train_loader, val_loader, criterion, optimizer, epochs=1, device=device)
     torch.save(model.state_dict(), "vit_model.pth")
 
 if __name__ == '__main__':
