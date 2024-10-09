@@ -7,7 +7,8 @@
 #SBATCH --gres=gpu:a100
 #SBATCH --job-name=2_ViT_train
 #SBATCH -o Res_2_ViT.out
-#SBATCH --time=1-00:00:00 #1 days total runtime, enable to use GPUs with max times
+#SBATCH --time=1-00:00:00 
+
 conda activate demo
 
 # Run the training script
