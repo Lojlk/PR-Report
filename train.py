@@ -110,7 +110,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=3e-4)
 
-    epochs = 100  # Set your desired number of epochs
+    epochs = 50  # Set your desired number of epochs
 
     # Start time
     start_time = time.time()
