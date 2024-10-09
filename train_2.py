@@ -2,12 +2,13 @@
 
 import os
 import copy
+import time  
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from modules_2 import VisionTransformer # need to change this 
-from dataset_2 import get_data_loaders # need to change this as well 
+from modules_2 import VisionTransformer  
+from dataset_2 import get_data_loaders 
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 
@@ -165,6 +166,8 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
     model.eval()
     all_preds = []
     all_labels = []
+    correct = 0  # Initialize correct predictions counter
+    total = 0    # Initialize total predictions counter
 
     with torch.no_grad():
         for inputs, labels in dataloader:
@@ -173,9 +176,14 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
 
             outputs = model(inputs)
             _, preds = torch.max(outputs, 1)
-
+            correct += torch.sum(preds == labels.data)
+            total += labels.size(0)
             all_preds.extend(preds.cpu().numpy())
             all_labels.extend(labels.cpu().numpy())
+
+    # Calculate and print test accuracy
+    test_accuracy = correct.double() / total
+    print(f"Test Accuracy: {test_accuracy*100:.2f}%")
 
     # Classification Report
     report = classification_report(all_labels, all_preds, target_names=class_names)
@@ -212,6 +220,9 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
 import itertools
 
 def main():
+    # Start the timer
+    start_time = time.time()
+
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
     batch_size = 32
@@ -226,7 +237,7 @@ def main():
     dropout = 0.1
     patch_size = 16
     cls_token = True
-    num_epochs = 30
+    num_epochs = 50 # increased to 50
     patience = 5
     learning_rate = 3e-4
     weight_decay = 1e-5
@@ -288,6 +299,13 @@ def main():
         save_dir=save_dir
     )
     print(f"Evaluation on test set completed. Confusion matrix saved to {save_dir}.")
+
+    # End the timer
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    minutes = int(elapsed_time // 60)
+    seconds = int(elapsed_time % 60)
+    print(f"Total time taken: {minutes}m {seconds}s")
 
 if __name__ == '__main__':
     main()
