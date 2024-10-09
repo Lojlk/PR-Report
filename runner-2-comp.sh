@@ -7,7 +7,6 @@
 #SBATCH --gres=gpu:a100
 #SBATCH --job-name=2_ViT_train
 #SBATCH -o Res_2_ViT.out
-#SBATCH --time=1-00:00:00 
 
 conda activate demo
 
