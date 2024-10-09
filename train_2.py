@@ -238,7 +238,7 @@ def main():
     patch_size = 16
     cls_token = True
     num_epochs = 50 # increased to 50
-    patience = 5
+    patience = 50 # num of epochs before early stopping (adjust this)
     learning_rate = 3e-4
     weight_decay = 1e-5
     save_dir = 'saved_models'
