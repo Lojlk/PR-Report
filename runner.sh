@@ -7,6 +7,7 @@
 #SBATCH --job-name=ViT_train_predict
 #SBATCH -o Result_ViT.out
 #SBATCH -e Error_ViT.err
+#SBATCH --time=1-00:00:00 #1 days total runtime, enable to use GPUs with max times
 conda activate demo
 
 # Run the training script
