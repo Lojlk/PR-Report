@@ -237,7 +237,7 @@ def main():
     dropout = 0.1
     patch_size = 16
     cls_token = True
-    num_epochs = 80 # increased to 50
+    num_epochs = 200 # increased to 50
     patience = 50 # num of epochs before early stopping (adjust this)
     learning_rate = 3e-4
     weight_decay = 1e-5
