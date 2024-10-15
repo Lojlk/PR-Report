@@ -11,6 +11,24 @@ from modules_2 import VisionTransformer
 from dataset_2 import get_data_loaders 
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
+import random # perform a second commit
+
+def set_seed(seed=42):
+    """
+    Set the seed for reproducibility.
+    
+    Args:
+        seed (int): The seed value to use.
+    """
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)  # If using CUDA
+    
+    # For CUDA algorithms, ensure deterministic behavior
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
 
 def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25, patience=5, save_dir='saved_models'):
     """
@@ -220,6 +238,10 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
 import itertools
 
 def main():
+
+    # Set the seed for reproducibility
+    set_seed(42)
+
     # Start the timer
     start_time = time.time()
 
@@ -237,9 +259,9 @@ def main():
     dropout = 0.1
     patch_size = 16
     cls_token = True
-    num_epochs = 200 # increased to 50
-    patience = 50 # num of epochs before early stopping (adjust this)
-    learning_rate = 3e-4
+    num_epochs = 80 
+    patience = 20 # num of epochs before early stopping 
+    learning_rate = 1e-4 # reduce learning rate
     weight_decay = 1e-5
     save_dir = 'saved_models'
 
