@@ -256,12 +256,12 @@ def main():
     num_heads = 12
     depth = 12
     ff_dim = 3072
-    dropout = 0.1
+    dropout = 0.3 # increased dropout rate
     patch_size = 16
     cls_token = True
     num_epochs = 80 
     patience = 20 # num of epochs before early stopping 
-    learning_rate = 5e-4 # increased learning rate
+    learning_rate = 3e-4 # increased learning rate
     weight_decay = 1e-5
     save_dir = 'saved_models'
 
