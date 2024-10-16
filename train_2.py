@@ -261,7 +261,7 @@ def main():
     cls_token = True
     num_epochs = 80 
     patience = 20 # num of epochs before early stopping 
-    learning_rate = 1e-4 # reduce learning rate
+    learning_rate = 5e-4 # increased learning rate
     weight_decay = 1e-5
     save_dir = 'saved_models'
 
