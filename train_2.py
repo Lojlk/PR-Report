@@ -246,7 +246,7 @@ def main():
 
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
-    batch_size = 32 # change the batch size 
+    batch_size = 64 # change the batch size 
     img_size = 224
     val_split = 0.2
     num_workers = 4
@@ -255,11 +255,11 @@ def main():
     num_heads = 12
     depth = 12
     ff_dim = 3072
-    dropout = 0.5 # increased dropout
+    dropout = 0.1 # increased dropout
     patch_size = 16
     cls_token = True
     num_epochs = 80 
-    patience = 30 # num of epochs before early stopping 
+    patience = 50 # num of epochs before early stopping 
     learning_rate = 3e-4 # increased learning rate
     weight_decay = 1e-5
     save_dir = 'saved_models'
