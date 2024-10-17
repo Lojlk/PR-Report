@@ -207,7 +207,6 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
     report = classification_report(all_labels, all_preds, target_names=class_names)
     print("Classification Report:\n", report)
 
-    # Probably dont need this at all =================================
     # Confusion Matrix
     cm = confusion_matrix(all_labels, all_preds)
     print("Confusion Matrix:\n", cm)
@@ -247,7 +246,7 @@ def main():
 
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
-    batch_size = 32
+    batch_size = 32 # change the batch size 
     img_size = 224
     val_split = 0.2
     num_workers = 4
@@ -260,11 +259,14 @@ def main():
     patch_size = 16
     cls_token = True
     num_epochs = 80 
-    patience = 20 # num of epochs before early stopping 
+    patience = 30 # num of epochs before early stopping 
     learning_rate = 3e-4 # increased learning rate
     weight_decay = 1e-5
     save_dir = 'saved_models'
-
+    
+    print(f"Key parameters for this trainning session: 
+          /n Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}")
+    
     # Device configuration
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
