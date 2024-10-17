@@ -256,7 +256,7 @@ def main():
     num_heads = 12
     depth = 12
     ff_dim = 3072
-    dropout = 0.3 # increased dropout
+    dropout = 0.5 # increased dropout
     patch_size = 16
     cls_token = True
     num_epochs = 80 
