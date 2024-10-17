@@ -264,8 +264,7 @@ def main():
     weight_decay = 1e-5
     save_dir = 'saved_models'
     
-    print(f"Key parameters for this trainning session: 
-          /n Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}")
+    print(f"Key parameters for this trainning session: /n Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}")
     
     # Device configuration
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
