@@ -246,7 +246,7 @@ def main():
 
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
-    batch_size = 64 # change the batch size 
+    batch_size = 16 # change the batch size 
     img_size = 224
     val_split = 0.2
     num_workers = 4
@@ -264,7 +264,7 @@ def main():
     weight_decay = 1e-5
     save_dir = 'saved_models'
     
-    print(f"Key parameters for this trainning session: /n Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}")
+    print(f"Key parameters for this trainning session: Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}")
     
     # Device configuration
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
