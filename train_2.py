@@ -246,7 +246,7 @@ def main():
 
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
-    batch_size = 16 # change the batch size 
+    batch_size = 8 # change the batch size 
     img_size = 224
     val_split = 0.2
     num_workers = 4
