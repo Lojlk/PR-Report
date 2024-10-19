@@ -261,7 +261,7 @@ def main():
     num_epochs = 80 
     patience = 50 # num of epochs before early stopping 
     learning_rate = 3e-4 # increased learning rate
-    weight_decay = 1e-4 # icnerased weight decay
+    weight_decay = 1e-6 # decreased weight decay
     save_dir = 'saved_models'
     
     print(f"Key parameters for this trainning session: Batch size: {batch_size}, Dropout: {dropout}, Learning Rate: {learning_rate}, Epoch: {num_epochs}, Weight Decay: {weight_decay}")
