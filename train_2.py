@@ -7,11 +7,13 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from modules_2 import VisionTransformer  
-from dataset_2 import get_data_loaders 
+from modules import VisionTransformer  
+from dataset import get_data_loaders 
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
-import random # perform a second commit
+import random
+import itertools
+
 
 def set_seed(seed=42):
     """
@@ -28,7 +30,6 @@ def set_seed(seed=42):
     # For CUDA algorithms, ensure deterministic behavior
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
-
 
 def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25, patience=5, save_dir='saved_models'):
     """
@@ -64,6 +65,7 @@ def train_model(model, dataloaders, criterion, optimizer, device, num_epochs=25,
 
     counter = 0
 
+    # main training/validation loop
     for epoch in range(num_epochs):
         print(f'Epoch {epoch +1}/{num_epochs}')
         print('-' * 10)
@@ -234,7 +236,6 @@ def evaluate_model(model, dataloader, device, class_names, save_dir='saved_model
     plt.savefig(os.path.join(save_dir, 'confusion_matrix.png'))
     plt.close()
 
-import itertools
 
 def main():
 
@@ -246,6 +247,7 @@ def main():
 
     # Configuration
     data_dir = "/home/groups/comp3710/ADNI/AD_NC"  # Dataset path
+    meta_data_path = "/home/groups/comp3710/ADNI/meta_data_with_label.json" # Path to the metadata file
     batch_size = 32 # change the batch size 
     img_size = 224
     val_split = 0.2
@@ -273,6 +275,7 @@ def main():
     # Get data loaders, class names, and class weights
     dataloaders, class_names, class_weights = get_data_loaders(
         data_dir=data_dir,
+        meta_data_path=meta_data_path,
         batch_size=batch_size,
         img_size=img_size,
         val_split=val_split,
